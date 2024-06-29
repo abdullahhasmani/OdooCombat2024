@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Custom CSS Classes */
+
+/* custom class for 0 margin */
+.margin-null {
+  margin: 0 !important;
+}
+
+/* custom class for 0 padding */
+.padding-null {
+  padding: 0 !important;
+}
+
+/* custom class for auto margin */
+.margin-auto {
+  margin: auto !important;
+}
+
+/* custom class for center content using flex */
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* custom class for row flex */
+.row-flex {
+  display: flex;
+  flex-direction: row;
+}
+
+/* custom class for column flex */
+.column-flex {
+  display: flex;
+  flex-direction: column;
+}
+
+/* custom class for text center */
+.text-center {
+  text-align: center;
+}
