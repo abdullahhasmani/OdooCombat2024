@@ -1,0 +1,76 @@
+.landing-container {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  position: relative;
+  height: 100vh;
+  background-image: url(../images/background6.jpg);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  text-align: center;
+  color: white;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 3em;
+  margin-bottom: 0.5em;
+}
+
+h2 {
+  font-size: 2em;
+  margin-bottom: 1em;
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-input {
+  width: 300px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+}
+
+.search-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 0 4px 4px 0;
+}
+
+.red-span {
+  color: #e93740;
+}
+
+.search-button {
+  padding: 10px;
+  border: none;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+  margin-left: -1px; /* Adjust for alignment with inputs */
+}
+
+.search-button svg {
+  vertical-align: text-bottom;
+}

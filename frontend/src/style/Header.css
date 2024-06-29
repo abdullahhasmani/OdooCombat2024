@@ -1,0 +1,66 @@
+/* Header.css */
+
+.navbar {
+  background-color: white !important;
+  font-family: "Lexend", sans-serif;
+}
+
+.navbar .navbar-nav {
+  flex: 1;
+  justify-content: center;
+}
+
+.navbar .navbar-brand {
+  margin-right: auto;
+}
+
+.navbar .nav-buttons {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.navbar .nav-buttons .btn {
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.transparent-button {
+  background-color: transparent;
+  border: none;
+  color: red;
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.transparent-button:hover {
+  background-color: transparent;
+  border: none;
+  color: red;
+}
+
+.transparent-button svg {
+  margin-right: 5px;
+}
+
+.post-listing-button {
+  background-color: red;
+  border: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  font-family: "Lexend", sans-serif;
+}
+
+.post-listing-button:hover {
+  background-color: darkred;
+  border: none;
+  color: white;
+}
+
+.post-listing-button svg {
+  margin-right: 5px;
+}
