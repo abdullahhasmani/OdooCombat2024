@@ -42,7 +42,7 @@ export const createProductController = async (req, res) => {
         });
     }
     //creating copy of product
-    const product = new productModel({ ...req.fields, slug: slugify(name) });
+    const product = new productModel({ ...req.fields, slug: slugify(name),owner:req.user._id});
     //checking photo
     if (photo) {
       product.photo.data = fs.readFileSync(photo.path);
@@ -202,15 +202,43 @@ export const deleteproductController = async (req, res) => {
 //product filter
 export const filterProductController = async (req, res) => {
   try {
-    const { checked, radio } = req.body;
-    let args = {};
-    if (checked.length > 0) args.category = checked;
-    if (radio.length) args.price = { $gte: radio[0], $lte: radio[1] };
-    const products = await productModel.find(args);
-    res.status(200).send({
-      success: true,
-      products,
-    });
+    const {startDate,endDate} =req.body;
+    if(startDate !=null && endDate !=null){
+      const unavailableProducts =await orderModel.distinct('products', {
+        $or: [
+          {
+            rentFrom: { $gte: startDate, $lt: endDate }
+          },
+          {
+            rentTill: { $gt: startDate, $lte: endDate }
+          },
+          {
+            $and: [
+              { rentFrom: { $lte: startDate } },
+              { rentTill: { $gte: endDate } }
+            ]
+          }
+        ]
+      });
+
+      const products = await productModel.find({
+        _id: { $nin: unavailableProducts }
+      });
+
+      res.status(200).send({
+        success: true,
+        products,
+      });
+    }
+    // const { checked, radio } = req.body;
+    // let args = {};
+    // if (checked.length > 0) args.category = checked;
+    // if (radio.length) args.price = { $gte: radio[0], $lte: radio[1] };
+    // const products = await productModel.find(args);
+    // res.status(200).send({
+    //   success: true,
+    //   products,
+    // });
   } catch (error) {
     console.log(error);
     res.status(400).send({
@@ -378,7 +406,6 @@ export const brainTreePaymentController = async (req, res) => {
             quantity:item.quantity,
             description:"${item.name} (from ${item.owner})",
             price:item.price,
-            total: item.price*item.quantity,
           }));
 
           const data = {
@@ -396,6 +423,8 @@ export const brainTreePaymentController = async (req, res) => {
               email: req.user.email,
             },
             products: productsList,
+            logo:"",
+            date:Date.now,
             // Add other necessary invoice fields
           };
         
